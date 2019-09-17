@@ -1,10 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
-    <% HttpSession session1 = request.getSession(false);
-        if(session1 != null){
-        %> 
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,25 +11,28 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
         <title>Meu Condomínio</title>
-        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- MetisMenu CSS -->
-        <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="../vendor/sb-admin/css/sb-admin-2.css" rel="stylesheet">
-        <!-- Custom Fonts -->
-        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- DataTables CSS -->
-        <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-        <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-        <link href="../vendor/datatables/css/dataTables.personalizado.css" rel="stylesheet">
-<!--        <link rel="stylesheet" href="https://unpkg.com/metismenu/dist/metisMenu.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        
+        <c:url value="/vendor/bootstrap/css/bootstrap.min.css" var="bootstrap" />
+        <c:url value="/vendor/metisMenu/metisMenu.min.css" var="metisMenu" />
+        <c:url value="/vendor/sb-admin/css/sb-admin-2.css" var="css" />
+        <c:url value="/vendor/font-awesome/css/font-awesome.min.css" var="font" />
+        <c:url value="/vendor/datatables-plugins/dataTables.bootstrap.css" var="dataTableBootstrap" />
+        <c:url value="/vendor/datatables-responsive/dataTables.responsive.css" var="dataTableReposive" />
+        <c:url value="/vendor/datatables/css/dataTables.personalizado.css" var="dataTablePersonalizado" />
+        
+        <link href="${bootstrap}" rel="stylesheet">
+        <link href="${metisMenu}" rel="stylesheet">
+        <link href="${css}" rel="stylesheet">
+        <link href="${font}" rel="stylesheet" type="text/css">
+        <link href="${dataTableBootstrap}" rel="stylesheet">
+        <link href="${dataTableReposive}" rel="stylesheet">
+        <link href="${dataTablePersonalizados}" rel="stylesheet">
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        
     </head>
     <body>
-        <div id="wrapper">
-            <!-- Navbar e Menu -->
-            <jsp:include file="menu.jsp"></jsp:include>
-
+       <%@include file="menu.jsp" %>
             <div id="page-wrapper">
                 <!-- /#page-wrapper -->
                 <br>
@@ -50,7 +51,7 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <table width="100%" class="table table-striped table-bordered table-hover display compact" id="grid">
+                                <table width="100%" class="table table-striped table-bordered table-hover display compact">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -63,17 +64,18 @@
                                     </thead>
                                     <tbody>
                                         <tr th:each="usuario : ${listUsuario}">              
-                                        <td class="odd gradeX" align="center" th:text="${usuario?.id}">Product ID</td>
-                                        <td class="odd gradeX" align="center" th:text="${usuario?.nome}">Name</td>
-                                        <td class="odd gradeX" align="center" th:text="${usuario?.email}">Name</td>
-                                        <td class="odd gradeX" align="center" th:text="${usuario?.id_unidade}">Name</td>
-                                        <td class="odd gradeX" align="center" th:text="${usuario?.perfil}">Name</td>
-                                        <td class="odd gradeX" align="center" th:text="${usuario?.status}">Name</td>
+                                        <td th:text="${usuario.id}">Product ID</td>
+                                        <td th:text="${usuario.nome}">Name</td>
+                                        <td th:text="${usuario.email}">Name</td>
+                                        <td th:text="${usuario.senha}">Name</td>
+                                        <td th:text="${usuario.status}">Name</td>
+                                        <td th:text="${usuario.perfil}">Name</td>
                                         <td>
-                                            <a class="odd gradeX" align="center" th:href="@{'/edit/' + ${usuario?.id}}">Edit</a>
+                                            <a th:href="@{'/edit/' + ${usuario.id}}">Edit</a>
                                             &nbsp;&nbsp;&nbsp;
-                                            <a class="odd gradeX" align="center" th:href="@{'/delete/' + ${usuario?.id}}">Delete</a>
+                                            <a th:href="@{'/delete/' + ${usuario.id}}">Delete</a>
                                         </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>     <!-- /.table-responsive -->
@@ -101,8 +103,22 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         -->
-        </body>
-    <%} else {
-    response.sendRedirect("../index.jsp");
-    }%>
+      </body>
+    
+    <c:url value="/vendor/jquery/jquery.min.js" var="jQuery" />
+    <c:url value="/vendor/bootstrap/js/bootstrap.min.js" var="bootstrap" />
+    <c:url value="/vendor/metisMenu/metisMenu.min.js" var="metisMenu" />
+    <c:url value="/vendor/sb-admin/js/sb-admin-2.js" var="CSS" />
+    <c:url value="/vendor/datatables/js/jquery.dataTables.min.js" var="dataTableJquery" />
+    <c:url value="/vendor/datatables/js/traducao.js" var="traducao" />
+    <c:url value="/vendor/datatables-plugins/dataTables.bootstrap.min.js" var="dataTableBootstrap" />
+    <c:url value="/vendor/datatables-responsive/dataTables.responsive.js" var="dataTableResponsive" />
+    <script src="${jQuery}"></script>
+    <script src="${bootstrap}"></script>
+    <script src="${metisMenu}"></script>
+    <script src="${CSS}"></script>
+    <script src="${dataTableJquery}"></script>
+    <script src="${traducao}"></script>
+    <script src="${dataTableBootstrap}"></script>
+    <script src="${dataTableResponsive}"></script>
 </html>

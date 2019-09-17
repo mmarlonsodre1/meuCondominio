@@ -4,7 +4,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="navbar-brand" href="home.jsp"><i class="fa fa-building fa-fw"></i> Meu Condomínio</a>
+        <a classinde="navbar-brand" href="home.jsp"><i class="fa fa-building fa-fw"></i> Meu Condomínio</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">

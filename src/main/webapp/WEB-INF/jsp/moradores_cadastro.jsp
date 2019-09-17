@@ -1,8 +1,8 @@
-<%@page import="br.com.Unidades.Unidades"%>
-<%@page import="br.com.Unidades.ListarUnidades"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <% HttpSession session1 = request.getSession(false);
         if(session1 != null){
         %> 
@@ -15,8 +15,20 @@
         <link rel="shortcut icon" href="../includes/img/favicon.ico" type="image/x-icon" />
 
         <title>Meu Condomínio</title>
-        <link rel="stylesheet" href="https://unpkg.com/metismenu/dist/metisMenu.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <c:url value="/vendor/bootstrap/css/bootstrap.min.css" var="bootstrap" />
+        <c:url value="/vendor/metisMenu/metisMenu.min.css" var="metisMenu" />
+        <c:url value="/vendor/sb-admin/css/sb-admin-2.css" var="css" />
+        <c:url value="/vendor/font-awesome/css/font-awesome.min.css" var="font" />
+        
+        <link href="${bootstrap}" rel="stylesheet">
+        <link href="${metisMenu}" rel="stylesheet">
+        <link href="${css}" rel="stylesheet">
+        <link href="${font}" rel="stylesheet" type="text/css">
+        
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        
     </head>
     <body>
         <div id="wrapper">
@@ -98,15 +110,18 @@
                         </div> 
                     </div>
                 </div>
-            </div>
-                                                
-        <script src="https://unpkg.com/jquery"></script>
-        <script src="https://unpkg.com/metismenu"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            </div>                                      
         
-        </body>
+        <c:url value="/vendor/jquery/jquery.min.js" var="jQuery" />
+        <c:url value="/vendor/bootstrap/js/bootstrap.min.js" var="bootstrap" />
+        <c:url value="/vendor/metisMenu/metisMenu.min.js" var="metisMenu" />
+        <c:url value="/vendor/sb-admin/js/sb-admin-2.js" var="CSS" />
+        <script src="${jQuery}"></script>
+        <script src="${bootstrap}"></script>
+        <script src="${metisMenu}"></script>
+        <script src="${CSS}"></script>
+        
+    </body>
     <%} else {
     response.sendRedirect("../index.jsp");
     }%>

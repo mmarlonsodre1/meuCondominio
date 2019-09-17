@@ -15,18 +15,10 @@ public class AppController {
     @Autowired
     private UsuarioService service;
      
-    @RequestMapping("/condominio")
-    public String viewHome(Model model){
-        List<Usuario> listUsuario = service.listAll();
-        model.addAttribute("listUsuario", listUsuario);
-        return "index";
-    }
     
     @RequestMapping("/")
     public ModelAndView viewUser(Model model){
         ModelAndView mav = new ModelAndView("index");
-        List<Usuario> listUsuario = service.listAll();
-        model.addAttribute("listUsuario", listUsuario);
         return mav;
     }
     
@@ -60,18 +52,19 @@ public class AppController {
         return mav;       
     }
     
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam(name = "email") String email, @RequestParam(name = "senha") String senha){
         ModelAndView mav = new ModelAndView("home");
+        List<Usuario> listUsuario = service.listAll();
         System.out.println(email +"    " + senha);
-        return (service.login(email, senha) != null)? new ModelAndView("home") : new ModelAndView("index");   
+        return (listUsuario != null)? new ModelAndView("home") : new ModelAndView("index");   
     }
     
     @RequestMapping("/usuarios")
     public ModelAndView verUsuarios(Model model){
         ModelAndView mav = new ModelAndView("usuarios");
         List<Usuario> listUsuario = service.listAll();
-        model.addAttribute("listUsuario", listUsuario);
+        mav.addObject("listUsuario", listUsuario);
         return mav;
     }
 }

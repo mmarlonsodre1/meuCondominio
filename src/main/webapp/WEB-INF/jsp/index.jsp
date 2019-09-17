@@ -1,4 +1,6 @@
-<jsp:page contentType="text/html" pageEncoding="UTF-8" session="false"></jsp:page>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -8,9 +10,20 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="shortcut icon" href="./includes/img/favicon.ico" type="image/x-icon" />
-        <title>Meu Condomínio</title>
-        <link rel="stylesheet" href="https://unpkg.com/metismenu/dist/metisMenu.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Meu CondomÃ­nio</title>
+        
+        <c:url value="/vendor/bootstrap/css/bootstrap.min.css" var="bootstrap" />
+        <c:url value="/vendor/metisMenu/metisMenu.min.css" var="metisMenu" />
+        <c:url value="/vendor/sb-admin/css/sb-admin-2.css" var="css" />
+        <c:url value="/vendor/font-awesome/css/font-awesome.min.css" var="font" />
+        
+        <link href="${bootstrap}" rel="stylesheet">
+        <link href="${metisMenu}" rel="stylesheet">
+        <link href="${css}" rel="stylesheet">
+        <link href="${font}" rel="stylesheet" type="text/css">
+        
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     </head>
     <body>
         <div class="container">      
@@ -20,16 +33,16 @@
                         <i class="fa fa-building fa-fw"></i>
                     </div>
                     <div class="panel-heading" align="middle">
-                        <h3 class="panel-title">Meu Condomínio</h3>
+                        <h3 class="panel-title">Meu CondomÃ­nio</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="#" th:action="@{'/login'}" method="post">
+                        <form role="form" action="/login" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" id="email" name="email" type="text autofocus">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="text autofocus">
                                            </div>
                                            <div class="form-group">
-                                           <input class="form-control" placeholder="Senha" id="senha" name="senha" type="password">
+                                           <input class="form-control" placeholder="Senha" name="senha" type="password">
                                 </div>
                                 <div class="form-group">
                                     <p class="text-center">
@@ -52,7 +65,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h5 class="modal-title text-center" id="myModalLabel">
-                            Meu Condomínio
+                            Meu CondomÃ­nio
                         </h5>
                         <br>
                         <h4 class="modal-title text-center" id="myModalLabel">
@@ -89,7 +102,7 @@
                                                     <option value="">---</option>
                                                     <option value="Morador">Morador</option>
                                                     <option value="Portaria">Portaria</option>
-                                                    <option value="Administracao">Administração</option>
+                                                    <option value="Administracao">AdministraÃ§Ã£o</option>
                                                 </select>
                                             </div>    
                                         </div>
@@ -124,7 +137,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h5 class="modal-title text-center" id="myModalLabel">
-                            Meu Condomínio                            </h5>
+                            Meu CondomÃ­nio                            </h5>
                         <br>
                         <h4 class="modal-title text-center" id="myModalLabel">
                             Recuperar Senha
@@ -140,11 +153,14 @@
             </div> 
         </div> 
         
-        <script src="https://unpkg.com/jquery"></script>
-        <script src="https://unpkg.com/metismenu"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <c:url value="/vendor/jquery/jquery.min.js" var="jQuery" />
+        <c:url value="/vendor/bootstrap/js/bootstrap.min.js" var="bootstrap" />
+        <c:url value="/vendor/metisMenu/metisMenu.min.js" var="metisMenu" />
+        <c:url value="/vendor/sb-admin/js/sb-admin-2.js" var="CSS" />
+        <script src="${jQuery}"></script>
+        <script src="${bootstrap}"></script>
+        <script src="${metisMenu}"></script>
+        <script src="${CSS}"></script>
     
     </body>
 </html>
