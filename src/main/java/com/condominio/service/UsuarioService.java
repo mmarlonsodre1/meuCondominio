@@ -1,5 +1,7 @@
-package com.condominio;
+package com.condominio.service;
 
+import com.condominio.model.Usuario;
+import com.condominio.repository.UsuarioRepositorio;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,25 +11,25 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class UsuarioService {
     @Autowired
-    private UsuarioRepositorio repo;
+    private UsuarioRepositorio repoUsuario;
     
     public List<Usuario> listAll(){
-        return repo.findAll();
+        return repoUsuario.findAll();
     }
     
     public void save(Usuario usuario){
-        repo.save(usuario);
+        repoUsuario.save(usuario);
     }
     
     public Usuario get(Long id){
-        return repo.findById(id).get();
+        return repoUsuario.findById(id).get();
     }
         
     public void delete(Long id){
-        repo.deleteById(id);  
+        repoUsuario.deleteById(id);  
     }
     
     public Usuario login(String email, String senha){
-        return repo.login(email, senha);
+        return repoUsuario.login(email, senha);
     }
 }

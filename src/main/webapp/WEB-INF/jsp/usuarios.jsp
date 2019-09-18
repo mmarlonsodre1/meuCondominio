@@ -64,12 +64,12 @@
                                     </thead>
                                     <tbody>
                                         <tr th:each="usuario : ${listUsuario}">              
-                                        <td th:text="${usuario.id}">Product ID</td>
-                                        <td th:text="${usuario.nome}">Name</td>
-                                        <td th:text="${usuario.email}">Name</td>
-                                        <td th:text="${usuario.senha}">Name</td>
-                                        <td th:text="${usuario.status}">Name</td>
-                                        <td th:text="${usuario.perfil}">Name</td>
+                                        <td >${usuario.id}</td>
+                                        <td >${usuario.nome}</td>
+                                        <td >${usuario.email}</td>
+                                        <td >${usuario.senha}</td>
+                                        <td >${usuario.status}</td>
+                                        <td >${usuario.perfil}</td>
                                         <td>
                                             <a th:href="@{'/edit/' + ${usuario.id}}">Edit</a>
                                             &nbsp;&nbsp;&nbsp;

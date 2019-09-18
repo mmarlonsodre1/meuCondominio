@@ -1,4 +1,4 @@
-package com.condominio;
+package com.condominio.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 @Entity
-@Table(name = "tb_usuarios")
+@Table(name = "usuario")
 public class Usuario implements Serializable {
     private Long id;
     private String nome;
@@ -22,7 +22,18 @@ public class Usuario implements Serializable {
     private String status;
     private Date dt_cadastro;
    
-    protected Usuario(){}
+    public Usuario(){}
+
+    public Usuario(Long id, String nome, String email, int id_unidade, String senha, String perfil, String status, Date dt_cadastro) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.id_unidade = id_unidade;
+        this.senha = senha;
+        this.perfil = perfil;
+        this.status = status;
+        this.dt_cadastro = dt_cadastro;
+    }
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
