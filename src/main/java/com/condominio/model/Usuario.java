@@ -108,5 +108,4 @@ public class Usuario implements Serializable {
     public void setDt_cadastro(Date dt_cadastro) {
         this.dt_cadastro = dt_cadastro;
     }
-    
 }

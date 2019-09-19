@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
@@ -24,19 +26,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="usuario : ${listUsuario}">              
-                <td th:text="${usuario?.id}">Product ID</td>
-                <td th:text="${usuario?.nome}">Name</td>
-                <td th:text="${usuario?.email}">Name</td>
-                <td th:text="${usuario?.senha}">Name</td>
-                <td th:text="${usuario?.status}">Name</td>
-                <td th:text="${usuario?.perfil}">Name</td>
-                <td>
-                    <a th:href="@{'/edit/' + ${usuario?.id}}">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${usuario?.id}}">Delete</a>
-                </td>
-            </tr>
+            <c:forEach items="${listUsuario}" var="usuario"> 
+                <tr>
+                    <a>${usuario.id}</a>
+                    <td th:text="${usuario.id}">${usuario.id}</td>
+                    <td th:text="${usuario.nome}">Name</td>
+                    <td th:text="${usuario.email}">Name</td>
+                    <td th:text="${usuario.senha}">Name</td>
+                    <td th:text="${usuario.status}">Name</td>
+                    <td th:text="${usuario.perfil}">Name</td>
+                    <td>
+                        <a th:href="@{'/edit/' + ${usuario.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/delete/' + ${usuario.id}}">Delete</a>
+                    </td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>   

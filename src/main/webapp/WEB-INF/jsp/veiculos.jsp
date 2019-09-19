@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <% HttpSession session1 = request.getSession(false);
-        if(session1 != null){
-        %> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,27 +63,28 @@
                                             <th>Modelo</th>
                                             <th>Ano</th>
                                             <th>Cor</th>
-                                            <th>Apt.</th>
+                                            <th>Unidade</th>
+                                            <th>Dt. Cadastro</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%
-                                            ListarVeiculos database = new ListarVeiculos();
-                                            database.getConexaoMySQL();
-                                            for (Veiculos veiculos : database.getListVeiculos()) {
-                                        %>
-                                        <tr>
-                                            <td class="odd gradeX" align="center"><a><%=veiculos.getId_veiculo()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=veiculos.getPlaca()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=veiculos.getMarca()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=veiculos.getModelo()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=veiculos.getAno()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=veiculos.getCor()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=veiculos.getId_apartamento()%></a></td>
-                                        </tr>
-                                        <%
-                                            }
-                                        %>
+                                        <c:forEach items="${listVeiculo}" var="veiculo"> 
+                                            <tr>              
+                                                <td class="odd gradeX" align="center">${veiculo.id}</td>
+                                                <td class="odd gradeX" align="center">${veiculo.placa}</td>
+                                                <td class="odd gradeX" align="center">${veiculo.marca}</td>
+                                                <td class="odd gradeX" align="center">${veiculo.modelo}</td>
+                                                <td class="odd gradeX" align="center">${veiculo.ano}</td>
+                                                <td class="odd gradeX" align="center">${veiculo.cor}</td>
+                                                <td class="odd gradeX" align="center">${veiculo.id_unidade}</td>
+                                                <td class="odd gradeX" align="center">${veiculo.dt_cadastro}</td>
+                                                <td class="odd gradeX" align="center">
+                                                    <a th:href="@{'/edit/' + ${veiculo.id}}">Edit</a>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a th:href="@{'/delete/' + ${veiculo.id}}">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>     <!-- /.table-responsive -->
@@ -94,7 +92,7 @@
                     </div>
                 </div>                  
             </div>
-        
+        </div>
         
         <c:url value="/vendor/jquery/jquery.min.js" var="jQuery" />
         <c:url value="/vendor/bootstrap/js/bootstrap.min.js" var="bootstrap" />
@@ -111,10 +109,6 @@
         <script src="${dataTableJquery}"></script>
         <script src="${traducao}"></script>
         <script src="${dataTableBootstrap}"></script>
-        <script src="${dataTableResponsive}"></script>
-        
+        <script src="${dataTableResponsive}"></script>      
     </body>
-    <%} else {
-    response.sendRedirect("../index.jsp");
-    }%>
 </html>

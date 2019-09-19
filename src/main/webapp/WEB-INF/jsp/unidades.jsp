@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <% HttpSession session1 = request.getSession(false);
-        if(session1 != null){
-        %> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,32 +58,27 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Status</th>
-                                            <th>Proprietário</th>
-                                            <th>Cpf</th>
+                                            <th>Proprietario</th>
+                                            <th>CPF</th>
                                             <th>Telefone</th>
-                                            <th>Id do Morador</th>
-                                            <th>Id da Vaga</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%
-                                            ListarUnidades database = new ListarUnidades();
-                                            database.getConexaoMySQL();
-                                            for (Unidades unidades : database.listUnidades()) {
-                                        %>
-                                        <tr>
-                                            <td class="odd gradeX" align="center"><a><%=unidades.getId()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=unidades.getStatus()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=unidades.getProprietario()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=unidades.getCpf()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=unidades.getTelefone()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=unidades.getId_morador()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=unidades.getId_vaga()%></a></td>
-                                        </tr>
-                                        <%
-                                            }
-                                        %>
+                                        <c:forEach items="${listUnidade}" var="unidade"> 
+                                            <tr>              
+                                                <td class="odd gradeX" align="center">${unidade.id}</td>
+                                                <td class="odd gradeX" align="center">${unidade.proprietario}</td>
+                                                <td class="odd gradeX" align="center">${unidade.cpf}</td>
+                                                <td class="odd gradeX" align="center">${unidade.telefone}</td>
+                                                <td class="odd gradeX" align="center">${unidade.status}</td>
+                                                <td class="odd gradeX" align="center">
+                                                    <a th:href="@{'/edit/' + ${unidade.id}}">Edit</a>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a th:href="@{'/delete/' + ${unidade.id}}">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>     <!-- /.table-responsive -->
@@ -94,6 +86,7 @@
                     </div>
                 </div>                  
             </div>
+        </div>
         
         <c:url value="/vendor/jquery/jquery.min.js" var="jQuery" />
         <c:url value="/vendor/bootstrap/js/bootstrap.min.js" var="bootstrap" />
@@ -111,9 +104,5 @@
         <script src="${traducao}"></script>
         <script src="${dataTableBootstrap}"></script>
         <script src="${dataTableResponsive}"></script>
-        
     </body>
-    <%} else {
-    response.sendRedirect("../index.jsp");
-    }%>
 </html>

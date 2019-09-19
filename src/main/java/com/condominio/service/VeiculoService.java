@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.condominio.repository.VeiculoRepositorio;
-import com.condominio.repository.VeiculoRepositorio;
 
 @Service
 @Transactional

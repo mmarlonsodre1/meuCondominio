@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.condominio.model;
 
 import java.io.Serializable;
@@ -13,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "morador")
@@ -27,8 +23,7 @@ public class Morador implements Serializable {
     private Date dt_cadastro;
     private Long id_unidade;
 
-    public Morador() {
-    }
+    public Morador() {}
 
     public Morador(Long id, String nome, String cpf, String rg, Date dt_nascimento, String email, String telefone, Date dt_cadastro, Long id_unidade) {
         this.id = id;
@@ -107,6 +102,7 @@ public class Morador implements Serializable {
     }
 
     @Column(nullable = true)
+    @Temporal(javax.persistence.TemporalType.DATE)
     public Date getDt_cadastro() {
         return dt_cadastro;
     }

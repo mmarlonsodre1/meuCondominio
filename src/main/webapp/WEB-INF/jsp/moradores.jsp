@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <% HttpSession session1 = request.getSession(false);
-        if(session1 != null){
-        %> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +41,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-xs-4">
                         <div class="panel panel-heading">
-                            <a href="moradores_cadastro.jsp"><button type="submit" class="btn btn-default"> <i class="fa fa-plus"></i> Nova Unidade</button></a>
+                            <a href="/novoMorador"><button type="submit" class="btn btn-default"> <i class="fa fa-plus"></i> Cadastrar Morador</button></a>
                         </div>
                     </div>
                 </div>    
@@ -61,37 +58,34 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>RG</th>
                                             <th>E-mail</th>
-                                            <th>Cpf</th>
-                                            <th>Rg</th>
-                                            <th>Dt. Nascimento</th>
                                             <th>Telefone</th>
-                                            <th>Apartamento</th>
-                                            <th>Status</th>
-                                            <th>Tipo Morador</th>
+                                            <th>Unidade</th>
+                                            <th>Dt. Nascimento</th>
+                                            <th>Dt. Cadastro</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%
-                                            ListarMoradores database = new ListarMoradores();
-                                            database.getConexaoMySQL();
-                                            for (Moradores moradores : database.listMoradores()) {
-                                        %>
-                                        <tr>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getId()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getNome()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getEmail()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getCpf()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getRg()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getDtNascimento()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getTelefone()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getApartamento()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getStatus()%></a></td>
-                                            <td class="odd gradeX" align="center"><a><%=moradores.getTipoMorador()%></a></td>
-                                        </tr>
-                                        <%
-                                            }
-                                        %>
+                                        <c:forEach items="${listMorador}" var="morador"> 
+                                            <tr>              
+                                                <td class="odd gradeX" align="center" th:text="${morador.id}">${morador.id}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.nome}">${morador.nome}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.cpf}">${morador.cpf}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.rg}">${morador.rg}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.email}">${morador.email}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.telefone}">${morador.telefone}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.id_unidade}">${morador.id_unidade}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.dt_nascimento}">${morador.dt_nascimento}</td>
+                                                <td class="odd gradeX" align="center" th:text="${morador.dt_cadastro}">${morador.dt_cadastro}</td>
+                                                <td class="odd gradeX" align="center">
+                                                    <a th:href="@{'/edit/' + ${morador.id}}">Edit</a>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a th:href="@{'/delete/' + ${morador.id}}">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>     <!-- /.table-responsive -->
@@ -99,6 +93,7 @@
                     </div>
                 </div>                  
             </div>
+        </div>
         
         <c:url value="/vendor/jquery/jquery.min.js" var="jQuery" />
         <c:url value="/vendor/bootstrap/js/bootstrap.min.js" var="bootstrap" />
@@ -116,9 +111,5 @@
         <script src="${traducao}"></script>
         <script src="${dataTableBootstrap}"></script>
         <script src="${dataTableResponsive}"></script>
-       
     </body>
-    <%} else {
-    response.sendRedirect("./index.jsp");
-    }%>
 </html>

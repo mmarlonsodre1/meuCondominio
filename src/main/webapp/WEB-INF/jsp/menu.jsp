@@ -4,7 +4,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
         </button>
-        <a classinde="navbar-brand" href="home.jsp"><i class="fa fa-building fa-fw"></i> Meu Condomínio</a>
+        <a classinde="navbar-brand" href="/usuarios"><i class="fa fa-building fa-fw"></i> Meu Condomínio</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
@@ -30,31 +30,22 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="home.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="/usuarios"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-building-o fa-fw"></i> Administração<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="usuarios.jsp"><i class="fa fa-user-plus fa-fw"></i> Usuários</a>
+                            <a href="/usuarios"><i class="fa fa-user-plus fa-fw"></i> Usuários</a>
                         </li>
                         <li>
-                            <a href="unidades.jsp"><i class="fa fa-building fa-fw"></i> Unidades</a>
+                            <a href="/unidades"><i class="fa fa-building fa-fw"></i> Unidades</a>
                         </li>
                         <li>
-                            <a href="moradores.jsp"><i class="fa fa-users fa-fw"></i> Moradores</a>
+                            <a href="/moradores"><i class="fa fa-users fa-fw"></i> Moradores</a>
                         </li>
                         <li>
-                            <a href="veiculos.jsp"><i class="fa fa-car fa-fw"></i> Veículos</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-shield fa-fw"></i> Portaria<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="visitas.jsp"><i class="fa fa-sign-in fa-fw"></i> Visitas</a>
+                            <a href="/veiculos"><i class="fa fa-car fa-fw"></i> Veículos</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
