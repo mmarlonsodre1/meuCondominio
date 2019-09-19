@@ -7,6 +7,7 @@ import com.condominio.model.Veiculo;
 import com.condominio.service.MoradorService;
 import com.condominio.service.UnidadeService;
 import com.condominio.service.VeiculoService;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -74,28 +75,28 @@ public class AppController {
     // TODO: SALVAR
     @RequestMapping(value = "/salvarUsuario", method = RequestMethod.POST)
     public ModelAndView salvarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-        ModelAndView mav = new ModelAndView("redirect:/usuario");
+        ModelAndView mav = new ModelAndView("redirect:/usuarios");
         serviceUsuario.save(usuario);
         return mav;
     }
     
-    @RequestMapping(value = "/salvarUunidade", method = RequestMethod.POST)
+    @RequestMapping(value = "/salvarUnidade", method = RequestMethod.POST)
     public ModelAndView salvarUnidade(@ModelAttribute("unidade") Unidade unidade) {
-        ModelAndView mav = new ModelAndView("redirect:/unidade");
+        ModelAndView mav = new ModelAndView("redirect:/unidades");
         serviceUnidade.save(unidade);
         return mav;
     }
    
     @RequestMapping(value = "/salvarVeiculo", method = RequestMethod.POST)
     public ModelAndView salvarVeiculo(@ModelAttribute("veiculo") Veiculo veiculo) {
-        ModelAndView mav = new ModelAndView("redirect:/veiculo");
+        ModelAndView mav = new ModelAndView("redirect:/veiculos");
         serviceVeiculo.save(veiculo);
         return mav;
     }
     
     @RequestMapping(value = "/salvarMorador", method = RequestMethod.POST)
     public ModelAndView salvarMorador(@ModelAttribute("morador") Morador morador) {
-        ModelAndView mav = new ModelAndView("redirect:/morador");
+        ModelAndView mav = new ModelAndView("redirect:/moradors");
         serviceMorador.save(morador);
         return mav;
     }

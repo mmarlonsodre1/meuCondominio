@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-xs-4">
                         <div class="panel panel-heading">
-                            <a href="unidades_cadastro.jsp"><button type="submit" class="btn btn-default"> <i class="fa fa-plus"></i> Nova Unidade</button></a>
+                            <a href="novaUnidade"><button type="submit" class="btn btn-default"> <i class="fa fa-plus"></i> Nova Unidade</button></a>
                         </div>
                     </div>
                 </div>    
