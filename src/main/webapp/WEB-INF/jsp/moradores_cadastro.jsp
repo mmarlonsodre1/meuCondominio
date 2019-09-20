@@ -1,11 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <% HttpSession session1 = request.getSession(false);
-        if(session1 != null){
-        %> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,59 +40,41 @@
                     <div class="panel-heading"><i class="fa fa-users"></i> Cadastro de Moradores </div>
                     <div class="panel-body">
                         <div class="row">
-                            <form class="form" action="../AddMoradores" name="formulario" method='post' id="formulario"> 
+                            <form:form class="form" action="/salvarMorador" modelAttribute="morador" name="formulario" method='post' id="formulario"> 
                                 <div class="col-xs-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
-                                                <label for="nome">Nome</label>
-                                                <input name="nome" id="proprietario" class="form-control" placeholder="Nome">
+                                                <form:label path="nome">Nome</form:label>
+                                                <form:input path="nome" id="proprietario" class="form-control" placeholder="Nome"/>
                                             </div>   
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
-                                                <label for="cpf">Cpf</label>
-                                                <input name="cpf" id="cpf" class="form-control" placeholder="Cpf">
+                                                <form:label path="cpf">CPF</form:label>
+                                                <form:input path="cpf" id="cpf" class="form-control" placeholder="CPF"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="rg">Rg</label>
-                                                <input name="rg" id="telefone" class="form-control" placeholder="Rg">
+                                                <form:label path="rg">RG</form:label>
+                                                <form:input path="rg" id="telefone" class="form-control" placeholder="RG"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="email">E-mail</label>
-                                                <input name="email" id="telefone" class="form-control" placeholder="E-mail" type="email">
+                                                <form:label path="email">E-mail</form:label>
+                                                <form:input path="email" id="telefone" class="form-control" placeholder="E-mail" type="email"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="telefone">Telefone</label>
-                                                <input name="telefone" id="telefone" class="form-control" placeholder="Telefone" type="tel">
+                                                <form:label path="telefone">Telefone</form:label>
+                                                <form:input path="telefone" id="telefone" class="form-control" placeholder="Telefone" type="tel"/>
+                                            </div>
+                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
+                                                <form:label path="dt_nascimento">Dt. Nascimento</form:label>
+                                                <form:input path="dt_nascimento" id="id_morador" class="form-control" placeholder="Dt. Nascimento" type="date"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="status">Status</label>
-                                                <select name="status" id="status" class="form-control">
-                                                    <option value="1">Lotada</option>
-                                                    <option value="2">Vazia</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="tipo_morador">Tipo de Morador</label>
-                                                <select name="tipo_morador" id="tipo_morador" class="form-control">
-                                                    <option value="1">Lotada</option>
-                                                    <option value="2">Vazia</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="dt_nascimento">Data de Nascimento</label>
-                                                <input name="dt_nascimento" id="id_morador" class="form-control" placeholder="Data de Nascimento" type="date">
-                                            </div>
-                                            <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="id_apartamento">Unidade</label>
-                                                <select name="id_apartamento" id="id_apartamento" class="form-control">
-                                                    <%
-                                                        ListarUnidades database1 = new ListarUnidades();
-                                                        database1.getConexaoMySQL();
-                                                        for (Unidades unidades : database1.listUnidades()) {
-                                                    %>
-                                                    <option value="<%=unidades.getId()%>"><%=unidades.getCasa()%></option>
-                                                    <%}%>
-                                                </select>
+                                                <form:label class="control-label" path="id_unidade">Unidade</form:label>
+                                                <form:select path="id_unidade" id="id_apartamento" class="form-control">
+                                                    <c:forEach items="${listUnidade}" var="unidade">        
+                                                        <form:option value="${unidade.id}">${unidade.unidade}</form:option>
+                                                    </c:forEach>
+                                                </form:select>
                                             </div>
                                         </div>
                                         <!-- FIM LINHA -->
@@ -103,10 +83,9 @@
                                                 <button type="submit" id="submit" value="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Salvar</button>
                                             </div>                                   
                                         </div>    
-                                        <a href="moradores_cadastro.jsp"></a>
                                     </div> <!-- DIV FORM GROUP-->
                                 </div>  
-                            </form> 
+                            </form:form> 
                         </div> 
                     </div>
                 </div>
@@ -122,7 +101,4 @@
         <script src="${CSS}"></script>
         
     </body>
-    <%} else {
-    response.sendRedirect("../index.jsp");
-    }%>
 </html>

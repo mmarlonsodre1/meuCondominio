@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <% HttpSession session1 = request.getSession(false);
-        if(session1 != null){
-        %> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,66 +37,62 @@
                     <div class="panel-heading"><i class="fa fa-car"></i> Cadastro de Veículos </div>
                     <div class="panel-body">
                         <div class="row">
-                            <form class="form" action="../AddVeiculos" name="formulario" method="POST" id="formulario"> 
+                            <form:form class="form" action="/salvarVeiculo" modelAttribute="veiculo" name="formulario" method="POST" id="formulario"> 
                                 <div class="col-xs-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="placa">Placa</label>
-                                                <input name="placa" id="placa" class="form-control" placeholder="Placa" value="">
+                                                <form:label path="placa">Placa</form:label>
+                                                <form:input path="placa" id="placa" class="form-control" placeholder="Placa" value=""/>
                                             </div>   
                                             <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="marca">Marca</label>
-                                                <select class="form-control" name="marca" id="marca">
-                                                    <option value="">---</option>
-                                                    <option value="Audi">Audi</option>
-                                                    <option value="BMW">BMW</option>
-                                                    <option value="CAOA Chery">CAOA Chery</option>
-                                                    <option value="Chevrolet">Chevrolet</option>
-                                                    <option value="Citroën">Citroën</option>
-                                                    <option value="Fiat">Fiat</option>
-                                                    <option value="Ford">Ford</option>
-                                                    <option value="Honda">Honda</option>
-                                                    <option value="Hyundai">Hyundai</option>
-                                                    <option value="Iveco">Iveco</option>
-                                                    <option value="JAC">JAC</option>
-                                                    <option value="Jeep">Jeep</option>
-                                                    <option value="Kia">Kia</option>
-                                                    <option value="Land Rover">Land Rover</option>
-                                                    <option value="Lifan">Lifan</option>
-                                                    <option value="Mercedes-Benz">Mercedes-Benz</option>
-                                                    <option value="Mitsubishi">Mitsubishi</option>
-                                                    <option value="Nissan">Nissan</option>
-                                                    <option value="Peugeot">Peugeot</option>
-                                                    <option value="Renault">Renault</option>
-                                                    <option value="Suzuki">Suzuki</option>
-                                                    <option value="Toyota">Toyota</option>
-                                                    <option value="Volkswagen">Volkswagen</option>
-                                                </select>
+                                                <form:label class="control-label" path="marca">Marca</form:label>
+                                                <form:select class="form-control" path="marca" id="marca">
+                                                    <form:option value="">---</form:option>
+                                                    <form:option value="Audi">Audi</form:option>
+                                                    <form:option value="BMW">BMW</form:option>
+                                                    <form:option value="CAOA Chery">CAOA Chery</form:option>
+                                                    <form:option value="Chevrolet">Chevrolet</form:option>
+                                                    <form:option value="Citroën">Citroën</form:option>
+                                                    <form:option value="Fiat">Fiat</form:option>
+                                                    <form:option value="Ford">Ford</form:option>
+                                                    <form:option value="Honda">Honda</form:option>
+                                                    <form:option value="Hyundai">Hyundai</form:option>
+                                                    <form:option value="Iveco">Iveco</form:option>
+                                                    <form:option value="JAC">JAC</form:option>
+                                                    <form:option value="Jeep">Jeep</form:option>
+                                                    <form:option value="Kia">Kia</form:option>
+                                                    <form:option value="Land Rover">Land Rover</form:option>
+                                                    <form:option value="Lifan">Lifan</form:option>
+                                                    <form:option value="Mercedes-Benz">Mercedes-Benz</form:option>
+                                                    <form:option value="Mitsubishi">Mitsubishi</form:option>
+                                                    <form:option value="Nissan">Nissan</form:option>
+                                                    <form:option value="Peugeot">Peugeot</form:option>
+                                                    <form:option value="Renault">Renault</form:option>
+                                                    <form:option value="Suzuki">Suzuki</form:option>
+                                                    <form:option value="Toyota">Toyota</form:option>
+                                                    <form:option value="Volkswagen">Volkswagen</form:option>
+                                                </form:select>
                                             </div> 
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="modelo">Modelo</label>
-                                                <input name="modelo" id="modelo" class="form-control" placeholder="Modelo" value="">
+                                                <form:label path="modelo">Modelo</form:label>
+                                                <form:input path="modelo" id="modelo" class="form-control" placeholder="Modelo" value=""/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="ano">Ano</label>
-                                                <input name="ano" id="ano" class="form-control" placeholder="Ano" value="" type="number">
+                                                <form:label path="ano">Ano</form:label>
+                                                <form:input path="ano" id="ano" class="form-control" placeholder="Ano" value="" type="number"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="cor">Cor</label>
-                                                <input name="cor" id="cor" class="form-control" placeholder="Cor" value="">
+                                                <form:label path="cor">Cor</form:label>
+                                                <form:input path="cor" id="cor" class="form-control" placeholder="Cor" value=""/>
                                             </div>
                                             <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="unidade">Unidade</label>
-                                                <select name="unidade" id="id_apartamento" class="form-control">
-                                                    <%
-                                                        ListarUnidades database1 = new ListarUnidades();
-                                                        database1.getConexaoMySQL();
-                                                        for (Unidades unidades : database1.listUnidades()) {
-                                                    %>
-                                                    <option value="<%=unidades.getId()%>"><%=unidades.getCasa()%></option>
-                                                    <%}%>
-                                                </select>
+                                                <form:label class="control-label" for="unidade">Unidade</form:label>
+                                                <form:select path="unidade" id="id_apartamento" class="form-control">
+                                                   <c:forEach items="${listUnidade}" var="unidade">        
+                                                        <form:option value="${unidade.id}">${unidade.unidade}</form:option>
+                                                    </c:forEach>                                                
+                                                </form:select>
                                             </div>
                                         </div>
                                         <!-- FIM LINHA -->
@@ -110,7 +103,7 @@
                                         </div>    
                                     </div> <!-- DIV FORM GROUP-->
                                 </div>  
-                            </form> 
+                            </form:form> 
                         </div> 
                     </div>
                 </div>
@@ -126,7 +119,4 @@
         <script src="${CSS}"></script>
         
     </body>
-    <%} else {
-    response.sendRedirect("../index.jsp");
-    }%>
 </html>

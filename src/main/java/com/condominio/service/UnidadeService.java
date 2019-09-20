@@ -17,6 +17,10 @@ public class UnidadeService {
         return repo.findAll();
     }
     
+    public List<Unidade> listUnidades(){
+        return repo.listPorUnidade();
+    }
+    
     public void save(Unidade unidade){
         repo.save(unidade);
     }

@@ -7,6 +7,9 @@ import com.condominio.model.Veiculo;
 import com.condominio.service.MoradorService;
 import com.condominio.service.UnidadeService;
 import com.condominio.service.VeiculoService;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +63,7 @@ public class AppController {
         ModelAndView mav = new ModelAndView("veiculos_cadastro");
         Veiculo veiculo = new Veiculo();
         model.addAttribute("veiculo", veiculo);
+        model.addAttribute("listUnidade", serviceUnidade.listUnidades());
         return mav;
     }
     
@@ -68,6 +72,7 @@ public class AppController {
         ModelAndView mav = new ModelAndView("moradores_cadastro");
         Morador morador = new Morador();
         model.addAttribute("morador", morador);
+        model.addAttribute("listUnidade", serviceUnidade.listUnidades());
         return mav;
     }
 //    
@@ -88,8 +93,9 @@ public class AppController {
     }
    
     @RequestMapping(value = "/salvarVeiculo", method = RequestMethod.POST)
-    public ModelAndView salvarVeiculo(@ModelAttribute("veiculo") Veiculo veiculo) {
+    public ModelAndView salvarVeiculo(@ModelAttribute("veiculo") Veiculo veiculo) throws ParseException {
         ModelAndView mav = new ModelAndView("redirect:/veiculos");
+        veiculo.setDt_cadastro(new SimpleDateFormat("yyyy/MM/dd").parse(new Date().toString()));
         serviceVeiculo.save(veiculo);
         return mav;
     }
