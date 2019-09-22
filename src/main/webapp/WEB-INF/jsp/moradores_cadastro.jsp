@@ -65,8 +65,8 @@
                                                 <form:input path="telefone" id="telefone" class="form-control" placeholder="Telefone" type="tel"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <form:label path="dt_nascimento">Dt. Nascimento</form:label>
-                                                <form:input path="dt_nascimento" id="id_morador" class="form-control" placeholder="Dt. Nascimento" type="date"/>
+                                                <label for="dt_nascimento_string">Dt. Nascimento</label>
+                                                <input name="dt_nascimento_string" id="id_morador" class="form-control" placeholder="Dt. Nascimento" type="date">
                                             </div>
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="id_unidade">Unidade</form:label>
@@ -80,7 +80,7 @@
                                         <!-- FIM LINHA -->
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-lg-3">
-                                                <button type="submit" id="submit" value="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Salvar</button>
+                                                <button type="submit" id="submit" value="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Salvar </button>
                                             </div>                                   
                                         </div>    
                                     </div> <!-- DIV FORM GROUP-->

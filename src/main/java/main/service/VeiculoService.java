@@ -1,11 +1,11 @@
-package com.condominio.service;
+package main.service;
 
-import com.condominio.model.Veiculo;
+import main.model.Veiculo;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.condominio.repository.VeiculoRepositorio;
+import main.repository.VeiculoRepositorio;
 
 @Service
 @Transactional
@@ -27,5 +27,10 @@ public class VeiculoService {
         
     public void delete(Long id){
         repoVeiculo.deleteById(id);  
+    }
+    
+    public void alterarVeiculo(String placa, String marca, String modelo, 
+            int ano, String cor, Long id_unidade, Long id){
+        repoVeiculo.alterar(placa, marca, modelo, ano, cor, id_unidade, id);
     }
 }

@@ -1,11 +1,12 @@
-package com.condominio.service;
+package main.service;
 
-import com.condominio.model.Morador;
+import main.model.Morador;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.condominio.repository.MoradorRepositorio;
+import main.repository.MoradorRepositorio;
+import java.util.Date;
 
 @Service
 @Transactional
@@ -27,5 +28,10 @@ public class MoradorService {
         
     public void delete(Long id){
         repoMorador.deleteById(id);  
+    }
+    
+    public void alterarMorador(String nome, String cpf, String rg, 
+            Date dt_nascimento, String email, String telefone, Long id_unidade, Long id){
+        repoMorador.alterar(nome, cpf, rg, dt_nascimento, email, telefone, id_unidade, id);
     }
 }

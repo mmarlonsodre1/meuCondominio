@@ -58,24 +58,27 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
+                                            <th>Unidade</th>
                                             <th>Proprietario</th>
                                             <th>CPF</th>
                                             <th>Telefone</th>
                                             <th>Status</th>
+                                            <th>Edição</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${listUnidade}" var="unidade"> 
                                             <tr>              
                                                 <td class="odd gradeX" align="center">${unidade.id}</td>
+                                                <td class="odd gradeX" align="center">${unidade.unidade}</td>
                                                 <td class="odd gradeX" align="center">${unidade.proprietario}</td>
                                                 <td class="odd gradeX" align="center">${unidade.cpf}</td>
                                                 <td class="odd gradeX" align="center">${unidade.telefone}</td>
                                                 <td class="odd gradeX" align="center">${unidade.status}</td>
                                                 <td class="odd gradeX" align="center">
-                                                    <a th:href="@{'/edit/' + ${unidade.id}}">Edit</a>
+                                                    <a href="editarUnidade/${unidade.id}">Edit</a>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <a th:href="@{'/delete/' + ${unidade.id}}">Delete</a>
+                                                    <a href="deletarUnidade/${unidade.id}">Delete</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

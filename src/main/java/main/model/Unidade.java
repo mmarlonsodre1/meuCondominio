@@ -1,4 +1,4 @@
-package com.condominio.model;
+package main.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;

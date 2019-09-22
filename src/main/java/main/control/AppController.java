@@ -1,13 +1,12 @@
-package com.condominio;
-import com.condominio.model.Morador;
-import com.condominio.model.Unidade;
-import com.condominio.service.UsuarioService;
-import com.condominio.model.Usuario;
-import com.condominio.model.Veiculo;
-import com.condominio.service.MoradorService;
-import com.condominio.service.UnidadeService;
-import com.condominio.service.VeiculoService;
-import java.text.DateFormat;
+package main.control;
+import main.model.Morador;
+import main.model.Unidade;
+import main.service.UsuarioService;
+import main.model.Usuario;
+import main.model.Veiculo;
+import main.service.MoradorService;
+import main.service.UnidadeService;
+import main.service.VeiculoService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -81,6 +80,7 @@ public class AppController {
     @RequestMapping(value = "/salvarUsuario", method = RequestMethod.POST)
     public ModelAndView salvarUsuario(@ModelAttribute("usuario") Usuario usuario) {
         ModelAndView mav = new ModelAndView("redirect:/usuarios");
+        usuario.setDt_cadastro(new Date());
         serviceUsuario.save(usuario);
         return mav;
     }
@@ -91,18 +91,21 @@ public class AppController {
         serviceUnidade.save(unidade);
         return mav;
     }
-   
+    
     @RequestMapping(value = "/salvarVeiculo", method = RequestMethod.POST)
     public ModelAndView salvarVeiculo(@ModelAttribute("veiculo") Veiculo veiculo) throws ParseException {
         ModelAndView mav = new ModelAndView("redirect:/veiculos");
-        veiculo.setDt_cadastro(new SimpleDateFormat("yyyy/MM/dd").parse(new Date().toString()));
+        veiculo.setDt_cadastro(new Date());
         serviceVeiculo.save(veiculo);
         return mav;
     }
     
     @RequestMapping(value = "/salvarMorador", method = RequestMethod.POST)
-    public ModelAndView salvarMorador(@ModelAttribute("morador") Morador morador) {
-        ModelAndView mav = new ModelAndView("redirect:/moradors");
+    public ModelAndView salvarMorador(@ModelAttribute("morador") Morador morador, @RequestParam(name = "dt_nascimento_string") String dt_nascimento) throws ParseException {
+        ModelAndView mav = new ModelAndView("redirect:/moradores");
+        morador.setDt_cadastro(new Date());
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dt_nascimento);
+        morador.setDt_nascimento(date);
         serviceMorador.save(morador);
         return mav;
     }
@@ -111,7 +114,7 @@ public class AppController {
     // TODO: EDITAR
     @RequestMapping("/editarUsuario/{id}")
     public ModelAndView verEdicaoUsuario(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("edit_usuario");
+        ModelAndView mav = new ModelAndView("usuarios_editar");
         Usuario usuario = serviceUsuario.get(id);
         mav.addObject("usuario", usuario);
         return mav;
@@ -119,54 +122,89 @@ public class AppController {
     
     @RequestMapping("/editarMorador/{id}")
     public ModelAndView verEdicaoMorador(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("edit_usuario");
+        ModelAndView mav = new ModelAndView("moradores_editar");
         Morador morador = serviceMorador.get(id);
-        mav.addObject("usuario", morador);
+        mav.addObject("morador", morador);
+        mav.addObject("listUnidade", serviceUnidade.listUnidades());
         return mav;
     }
     
     @RequestMapping("/editarVeiculo/{id}")
     public ModelAndView verEdicaoVeiculo(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("edit_usuario");
+        ModelAndView mav = new ModelAndView("veiculos_editar");
         Veiculo veiculo = serviceVeiculo.get(id);
         mav.addObject("veiculo", veiculo);
+        mav.addObject("listUnidade", serviceUnidade.listUnidades());
         return mav;
     }
     
     @RequestMapping("/editarUnidade/{id}")
     public ModelAndView verEdicaoUnidade(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("edit_usuario");
+        ModelAndView mav = new ModelAndView("unidades_editar");
         Unidade unidade = serviceUnidade.get(id);
-        mav.addObject("usuario", unidade);
+        mav.addObject("unidade", unidade);
+        return mav;
+    }
+   
+    
+        // TODO: SALVAR Edicao
+    @RequestMapping(value = "/salvarEdicaoUsuario", method = RequestMethod.POST)
+    public ModelAndView salvarEdicaoUsuario(@ModelAttribute("usuario") Usuario usuario) {
+        ModelAndView mav = new ModelAndView("redirect:/usuarios");
+        serviceUsuario.alterarUsuario(usuario.getNome(), usuario.getEmail(), usuario.getId());
         return mav;
     }
     
+    @RequestMapping(value = "/salvarEdicaoUnidade", method = RequestMethod.POST)
+    public ModelAndView salvarEdicaoUnidade(@ModelAttribute("unidade") Unidade unidade) {
+        ModelAndView mav = new ModelAndView("redirect:/unidades");
+        serviceUnidade.alterarUnidade(unidade.getProprietario(), unidade.getCpf(), unidade.getTelefone(), 
+                unidade.getStatus(), unidade.getId());
+        return mav;
+    }
+    
+    @RequestMapping(value = "/salvarEdicaoVeiculo", method = RequestMethod.POST)
+    public ModelAndView salvarEdicaoVeiculo(@ModelAttribute("veiculo") Veiculo veiculo) {
+        ModelAndView mav = new ModelAndView("redirect:/veiculos");
+        serviceVeiculo.alterarVeiculo(veiculo.getPlaca(), veiculo.getMarca(), veiculo.getModelo(), 
+                veiculo.getAno(), veiculo.getCor(), veiculo.getId_unidade(), veiculo.getId());
+        return mav;
+    }
+    
+    @RequestMapping(value = "/salvarEdicaoMorador", method = RequestMethod.POST)
+    public ModelAndView salvarEdicaoMorador(@ModelAttribute("morador") Morador morador) {
+        ModelAndView mav = new ModelAndView("redirect:/moradores");
+        serviceMorador.alterarMorador(morador.getNome(), morador.getCpf(), morador.getRg(), 
+                morador.getDt_nascimento(), morador.getEmail(), morador.getTelefone(), 
+                morador.getId_unidade(), morador.getId());
+        return mav;
+    }
     
     // TODO: DELETAR
     @RequestMapping("/deletarUsuario/{id}")
     public ModelAndView deletarUsuario(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("redirect:/");
+        ModelAndView mav = new ModelAndView("redirect:/usuarios");
         serviceUsuario.delete(id);
         return mav;       
     }
     
     @RequestMapping("/deletarMorador/{id}")
     public ModelAndView deletarMorador(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("redirect:/");
+        ModelAndView mav = new ModelAndView("redirect:/moradores");
         serviceMorador.delete(id);
         return mav;       
     }
     
     @RequestMapping("/deletarUnidade/{id}")
     public ModelAndView deletarUnidade(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("redirect:/");
+        ModelAndView mav = new ModelAndView("redirect:/unidades");
         serviceUnidade.delete(id);
         return mav;       
     }
     
     @RequestMapping("/deletarVeiculo/{id}")
     public ModelAndView deletarVeiculo(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("redirect:/");
+        ModelAndView mav = new ModelAndView("redirect:/veiculos");
         serviceVeiculo.delete(id);
         return mav;       
     }
@@ -176,8 +214,15 @@ public class AppController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam(name = "email") String email, @RequestParam(name = "senha") String senha){
         ModelAndView mav = new ModelAndView("home");
-        List<Usuario> listUsuario = serviceUsuario.listAll();
-        return (listUsuario.size()>0)? new ModelAndView("redirect:/usuarios") : new ModelAndView("index");   
+        List<Usuario> listUsuario = serviceUsuario.login(email, senha);
+        return (listUsuario.size() > 0)? new ModelAndView("redirect:/usuarios") : new ModelAndView("index");   
+    }
+    
+    // TODO: LOGOUT
+    @RequestMapping("/logout")
+    public ModelAndView logout(Model model){
+        ModelAndView mav = new ModelAndView("index");
+        return mav;   
     }
     
     

@@ -1,11 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <% HttpSession session1 = request.getSession(false);
-        if(session1 != null){
-        %> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,58 +38,32 @@
                     <div class="panel-heading"><i class="fa fa-user"></i> Cadastro de Usuários </div>
                     <div class="panel-body">
                         <div class="row">
-                            <form class="form" action="../AddUsuario" name="formulario" method='post' id="formulario"> 
+                            <form:form class="form" action="/salvarUsuario" modelAttribute="usuario" name="formulario" method='post' id="formulario"> 
                                 <div class="col-xs-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
-                                                <label for="nome">Nome</label>
-                                                <input name="nome" id="nome" class="form-control" placeholder="Nome">
+                                                <form:label path="nome">Nome</form:label>
+                                                <form:input path="nome" id="nome" class="form-control" placeholder="Nome"/>
                                             </div>   
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
-                                                <label for="email">E-mail</label>
-                                                <input name="email" id="email" class="form-control" placeholder="E-mail" value="" type="email">
+                                                <form:label path="email">E-mail</form:label>
+                                                <form:input path="email" id="email" class="form-control" placeholder="E-mail" value="" type="email"/>
                                             </div>   
-                                            <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="unidade">Unidade</label>
-                                                <select name="unidade" id="id_apartamento" class="form-control">
-                                                    <%
-                                                        ListarUnidades database1 = new ListarUnidades();
-                                                        database1.getConexaoMySQL();
-                                                        for (Unidades unidades : database1.listUnidades()) {
-                                                    %>
-                                                    <option value="<%=unidades.getId()%>"><%=unidades.getCasa()%></option>
-                                                    <%}%>
-                                                </select>
-                                            </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="senha">Senha</label>
-                                                <input name="senha" id="senha" class="form-control" placeholder="Senha" value="" type="password">
-                                            </div>
-                                            <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="perfil">Perfil</label>
-                                                <select name="perfil" id="perfil" class="form-control">
-                                                    <option value="Morador">Morador</option>
-                                                    <option value="Funcionário">Funcionário</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-xs-2 col-lg-2">
-                                                <label class="control-label" for="status">Status</label>
-                                                <select name="status" id="status" class="form-control">
-                                                    <option value="Acesso">Acesso</option>
-                                                    <option value="Não Acesso">Não Acesso</option>
-                                                </select>
+                                                <form:label path="senha">Senha</form:label>
+                                                <form:input path="senha" id="senha" class="form-control" placeholder="Senha" value="" type="password"/>
                                             </div>
                                         </div>
                                         <!-- FIM LINHA -->
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-lg-3">
-                                                <button type="submit" id="submit" value="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Salvar</button>
+                                                <button type="submit" id="submit" value="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Salvar </button>
                                             </div>                                   
                                         </div>    
                                     </div> <!-- DIV FORM GROUP-->
                                 </div>  
-                            </form> 
+                            </form:form> 
                         </div> 
                     </div>
                 </div>
@@ -107,7 +79,4 @@
         <script src="${CSS}"></script>
         
     </body>
-    <%} else {
-    response.sendRedirect("../index.jsp");
-    }%>
 </html>

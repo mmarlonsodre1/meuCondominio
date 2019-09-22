@@ -48,7 +48,7 @@
                     <div class="col-lg-12 col-xs-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-users"></i> Usuários Cadastrados                      
+                                <i class="fa fa-user"></i> Usuários Cadastrados                      
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -57,9 +57,7 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>E-mail</th> 
-                                            <th>Status</th>
-                                            <th>Perfil</th>
+                                            <th>E-mail</th>
                                             <th>Dt. Cadastro</th>
                                             <th>Edição</th>
                                         </tr>
@@ -70,13 +68,11 @@
                                                 <td class="odd gradeX" align="center" th:text="${usuario.id}">${usuario.id}</td>
                                                 <td class="odd gradeX" align="center" th:text="${usuario.nome}">${usuario.nome}</td>
                                                 <td class="odd gradeX" align="center" th:text="${usuario.email}">${usuario.email}</td>
-                                                <td class="odd gradeX" align="center" th:text="${usuario.status}">${usuario.status}</td>
-                                                <td class="odd gradeX" align="center" th:text="${usuario.perfil}">${usuario.perfil}</td>
                                                 <td class="odd gradeX" align="center" th:text="${usuario.dt_cadastro}">${usuario.dt_cadastro}</td>
                                                 <td class="odd gradeX" align="center">
-                                                    <a th:href="@{'/edit/' + ${usuario.id}}">Edit</a>
+                                                    <a href="/editarUsuario/${usuario.id}">Edit</a>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <a th:href="@{'/delete/' + ${usuario.id}}">Delete</a>
+                                                    <a href="deletarUsuario/${usuario.id}">Delete</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

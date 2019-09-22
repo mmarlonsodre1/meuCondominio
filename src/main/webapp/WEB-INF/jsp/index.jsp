@@ -39,7 +39,7 @@
                         <form role="form" action="/login" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="text autofocus">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="text autofocus email">
                                            </div>
                                            <div class="form-group">
                                            <input class="form-control" placeholder="Senha" name="senha" type="password">

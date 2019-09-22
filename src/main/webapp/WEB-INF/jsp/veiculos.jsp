@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-xs-4">
                         <div class="panel panel-heading">
-                            <a href="veiculos_cadastro.jsp"><button type="submit" class="btn btn-default"> <i class="fa fa-plus"></i> Novo Veículo</button></a>
+                            <a href="/novoVeiculo"><button type="submit" class="btn btn-default"> <i class="fa fa-plus"></i> Novo Veículo</button></a>
                         </div>
                     </div>
                 </div>    
@@ -65,6 +65,7 @@
                                             <th>Cor</th>
                                             <th>Unidade</th>
                                             <th>Dt. Cadastro</th>
+                                            <th>Edição</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -79,9 +80,9 @@
                                                 <td class="odd gradeX" align="center">${veiculo.id_unidade}</td>
                                                 <td class="odd gradeX" align="center">${veiculo.dt_cadastro}</td>
                                                 <td class="odd gradeX" align="center">
-                                                    <a th:href="@{'/edit/' + ${veiculo.id}}">Edit</a>
+                                                    <a href="editarVeiculo/${veiculo.id}">Edit</a>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <a th:href="@{'/delete/' + ${veiculo.id}}">Delete</a>
+                                                    <a href="deletarVeiculo/${veiculo.id}">Delete</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

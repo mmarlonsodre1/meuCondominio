@@ -2,7 +2,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -36,35 +35,45 @@
                 <!-- /#page-wrapper -->
                 <br>
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-building"></i> Cadastro de Unidades </div>
+                    <div class="panel-heading"><i class="fa fa-user"></i> Edição de Moradores </div>
                     <div class="panel-body">
                         <div class="row">
-                                <form:form class="form" action="/salvarUnidade" modelAttribute="unidade" id="formulario" method="post">
+                            <form:form class="form" action="/salvarEdicaoMorador" modelAttribute="morador" name="formulario" method='post' id="formulario"> 
                                 <div class="col-xs-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
-                                                <form:label path="proprietario">Proprietário</form:label>
-                                                <form:input path="proprietario" class="form-control" placeholder="Proprietário"/>
-                                            </div>
-                                            
+                                                <form:label path="nome">Nome</form:label>
+                                                <form:input path="nome" id="proprietario" class="form-control" placeholder="Nome"/>
+                                            </div>   
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
-                                                <form:label path="cpf">Cpf</form:label>
-                                                <form:input path="cpf" class="form-control" placeholder="Cpf" type="number"/>
+                                                <form:label path="cpf">CPF</form:label>
+                                                <form:input path="cpf" id="cpf" class="form-control" placeholder="CPF"/>
                                             </div>
-                                            
+                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
+                                                <form:label path="rg">RG</form:label>
+                                                <form:input path="rg" id="telefone" class="form-control" placeholder="RG"/>
+                                            </div>
+                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
+                                                <form:label path="email">E-mail</form:label>
+                                                <form:input path="email" id="telefone" class="form-control" placeholder="E-mail" type="email"/>
+                                            </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="telefone">Telefone</form:label>
-                                                <form:input path="telefone" class="form-control" placeholder="Telefone" type="tel"/>
+                                                <form:input path="telefone" id="telefone" class="form-control" placeholder="Telefone" type="tel"/>
                                             </div>
-                                            
+                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
+                                                <label for="dt_nascimento_string">Dt. Nascimento</label>
+                                                <input name="dt_nascimento_string" id="id_morador" class="form-control" placeholder="Dt. Nascimento" type="date">
+                                            </div>
                                             <div class="form-group col-xs-2 col-lg-2">
-                                                <form:label class="control-label" path="status">Status</form:label>
-                                                <form:select path="status" class="form-control">
-                                                    <form:option value="1">Lotada</form:option>
-                                                    <form:option value="2">Vazia</form:option>
+                                                <form:label class="control-label" path="id_unidade">Unidade</form:label>
+                                                <form:select path="id_unidade" id="id_apartamento" class="form-control">
+                                                    <c:forEach items="${listUnidade}" var="unidade">        
+                                                        <form:option value="${unidade.id}">${unidade.unidade}</form:option>
+                                                    </c:forEach>
                                                 </form:select>
-                                            </div>
+                                            </div>  
                                         </div>
                                         <!-- FIM LINHA -->
                                         <div class="row">

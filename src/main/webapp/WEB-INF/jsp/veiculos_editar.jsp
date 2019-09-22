@@ -35,10 +35,10 @@
                 <!-- /#page-wrapper -->
                 <br>
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-car"></i> Cadastro de Veículos </div>
+                    <div class="panel-heading"><i class="fa fa-car"></i> Edição de Veiculos </div>
                     <div class="panel-body">
                         <div class="row">
-                            <form:form class="form" action="/salvarVeiculo" modelAttribute="veiculo" name="formulario" method="POST" id="formulario"> 
+                            <form:form class="form" action="/salvarEdicaoVeiculo" modelAttribute="veiculo" name="formulario" method='post' id="formulario"> 
                                 <div class="col-xs-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="row">
@@ -94,7 +94,7 @@
                                                         <form:option value="${unidade.id}">${unidade.unidade}</form:option>
                                                     </c:forEach>                                                
                                                 </form:select>
-                                            </div>
+                                            </div> 
                                         </div>
                                         <!-- FIM LINHA -->
                                         <div class="row">

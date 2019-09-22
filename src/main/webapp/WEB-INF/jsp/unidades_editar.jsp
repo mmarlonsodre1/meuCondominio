@@ -2,7 +2,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -36,10 +35,10 @@
                 <!-- /#page-wrapper -->
                 <br>
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-building"></i> Cadastro de Unidades </div>
+                    <div class="panel-heading"><i class="fa fa-building"></i> Edição de Unidades </div>
                     <div class="panel-body">
                         <div class="row">
-                                <form:form class="form" action="/salvarUnidade" modelAttribute="unidade" id="formulario" method="post">
+                            <form:form class="form" action="/salvarEdicaoUnidade" modelAttribute="unidade" name="formulario" method='post' id="formulario"> 
                                 <div class="col-xs-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="row">
@@ -64,7 +63,7 @@
                                                     <form:option value="1">Lotada</form:option>
                                                     <form:option value="2">Vazia</form:option>
                                                 </form:select>
-                                            </div>
+                                            </div>  
                                         </div>
                                         <!-- FIM LINHA -->
                                         <div class="row">

@@ -1,7 +1,7 @@
-package com.condominio.service;
+package main.service;
 
-import com.condominio.model.Usuario;
-import com.condominio.repository.UsuarioRepositorio;
+import main.model.Usuario;
+import main.repository.UsuarioRepositorio;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,11 @@ public class UsuarioService {
         repoUsuario.deleteById(id);  
     }
     
-    public Usuario login(String email, String senha){
+    public List<Usuario> login(String email, String senha){
         return repoUsuario.login(email, senha);
+    }
+    
+    public void alterarUsuario(String nome, String email, Long id){
+        repoUsuario.alterar(nome, email, id);
     }
 }

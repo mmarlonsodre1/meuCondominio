@@ -65,6 +65,7 @@
                                             <th>Unidade</th>
                                             <th>Dt. Nascimento</th>
                                             <th>Dt. Cadastro</th>
+                                            <th>Edição</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -80,9 +81,9 @@
                                                 <td class="odd gradeX" align="center" th:text="${morador.dt_nascimento}">${morador.dt_nascimento}</td>
                                                 <td class="odd gradeX" align="center" th:text="${morador.dt_cadastro}">${morador.dt_cadastro}</td>
                                                 <td class="odd gradeX" align="center">
-                                                    <a th:href="@{'/edit/' + ${morador.id}}">Edit</a>
+                                                    <a href="editarMorador/${morador.id}">Edit</a>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <a th:href="@{'/delete/' + ${morador.id}}">Delete</a>
+                                                    <a href="deletarMorador/${morador.id}">Delete</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
