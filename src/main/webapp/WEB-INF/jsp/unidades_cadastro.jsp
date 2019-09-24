@@ -44,6 +44,11 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
+                                                <form:label path="unidade_name">Unidade</form:label>
+                                                <form:input path="unidade_name" class="form-control" placeholder="Unidade"/>
+                                            </div>
+                                            
+                                            <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="proprietario">Proprietário</form:label>
                                                 <form:input path="proprietario" class="form-control" placeholder="Proprietário"/>
                                             </div>
@@ -61,7 +66,7 @@
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="status">Status</form:label>
                                                 <form:select path="status" class="form-control">
-                                                    <form:option value="1">Lotada</form:option>
+                                                    <form:option value="1">Utilizada</form:option>
                                                     <form:option value="2">Vazia</form:option>
                                                 </form:select>
                                             </div>

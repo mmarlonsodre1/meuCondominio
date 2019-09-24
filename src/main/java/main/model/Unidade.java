@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "unidade")
 public class Unidade implements Serializable {
     private Long id;
-    private String unidade;
+    private String unidade_name;
     private String proprietario;
     private String cpf;
     private String telefone;
@@ -21,9 +21,9 @@ public class Unidade implements Serializable {
     public Unidade() {
     }
 
-    public Unidade(Long id, String unidade, String proprietario, String cpf, String telefone, String status) {
+    public Unidade(Long id, String unidade_name, String proprietario, String cpf, String telefone, String status) {
         this.id = id;
-        this.unidade = unidade;
+        this.unidade_name = unidade_name;
         this.proprietario = proprietario;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -41,12 +41,12 @@ public class Unidade implements Serializable {
     }
 
     @Column(nullable = true)
-    public String getUnidade() {
-        return unidade;
+    public String getUnidade_name() {
+        return unidade_name;
     }
 
-    public void setUnidade(String unidade) {
-        this.unidade = unidade;
+    public void setUnidade_name(String unidade_name) {
+        this.unidade_name = unidade_name;
     }
 
     @Column(nullable = true)

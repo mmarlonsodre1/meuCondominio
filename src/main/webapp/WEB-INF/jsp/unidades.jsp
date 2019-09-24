@@ -70,7 +70,7 @@
                                         <c:forEach items="${listUnidade}" var="unidade"> 
                                             <tr>              
                                                 <td class="odd gradeX" align="center">${unidade.id}</td>
-                                                <td class="odd gradeX" align="center">${unidade.unidade}</td>
+                                                <td class="odd gradeX" align="center">${unidade.unidade_name}</td>
                                                 <td class="odd gradeX" align="center">${unidade.proprietario}</td>
                                                 <td class="odd gradeX" align="center">${unidade.cpf}</td>
                                                 <td class="odd gradeX" align="center">${unidade.telefone}</td>
