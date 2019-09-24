@@ -31,7 +31,7 @@ public class MoradorService {
     }
     
     public void alterarMorador(String nome, String cpf, String rg, 
-            Date dt_nascimento, String email, String telefone, Long id_unidade, Long id){
-        repoMorador.alterar(nome, cpf, rg, dt_nascimento, email, telefone, id_unidade, id);
+            String email, String telefone, Long id_unidade, Long id){
+        repoMorador.alterar(nome, cpf, rg, email, telefone, id_unidade, id);
     }
 }

@@ -43,6 +43,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
+                                                <label name="id">${id}</label>
+                                                <input name="id" id="id" class="form-control" placeholder="${id}" readonly="true" value="${id}"/>
+                                            </div>
+                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="placa">Placa</form:label>
                                                 <form:input path="placa" id="placa" class="form-control" placeholder="Placa" value=""/>
                                             </div>   

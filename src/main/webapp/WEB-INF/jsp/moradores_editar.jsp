@@ -42,6 +42,10 @@
                                 <div class="col-xs-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="row">
+                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
+                                                <label name="id">${id}</label>
+                                                <input name="id" id="id" class="form-control" placeholder="${id}" readonly="true" value="${id}"/>
+                                            </div>
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="nome">Nome</form:label>
                                                 <form:input path="nome" id="proprietario" class="form-control" placeholder="Nome"/>
@@ -61,10 +65,6 @@
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="telefone">Telefone</form:label>
                                                 <form:input path="telefone" id="telefone" class="form-control" placeholder="Telefone" type="tel"/>
-                                            </div>
-                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="dt_nascimento_string">Dt. Nascimento</label>
-                                                <input name="dt_nascimento_string" id="id_morador" class="form-control" placeholder="Dt. Nascimento" type="date">
                                             </div>
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="id_unidade">Unidade</form:label>

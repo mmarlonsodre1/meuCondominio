@@ -1,0 +1,14 @@
+main\model\Usuario.class
+main\repository\UsuarioRepositorio.class
+main\model\Morador.class
+main\service\UnidadeService.class
+main\repository\MoradorRepositorio.class
+main\repository\UnidadeRepositorio.class
+main\model\Veiculo.class
+main\MeuCondominioApplication.class
+main\service\UsuarioService.class
+main\service\MoradorService.class
+main\model\Unidade.class
+main\service\VeiculoService.class
+main\repository\VeiculoRepositorio.class
+main\control\AppController.class

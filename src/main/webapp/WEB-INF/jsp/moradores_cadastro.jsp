@@ -64,10 +64,6 @@
                                                 <form:label path="telefone">Telefone</form:label>
                                                 <form:input path="telefone" id="telefone" class="form-control" placeholder="Telefone" type="tel"/>
                                             </div>
-                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
-                                                <label for="dt_nascimento_string">Dt. Nascimento</label>
-                                                <input name="dt_nascimento_string" id="id_morador" class="form-control" placeholder="Dt. Nascimento" type="date">
-                                            </div>
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="id_unidade">Unidade</form:label>
                                                 <form:select path="id_unidade" id="id_apartamento" class="form-control">

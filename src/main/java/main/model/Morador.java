@@ -17,7 +17,6 @@ public class Morador implements Serializable {
     private String nome;
     private String cpf;
     private String rg;
-    private Date dt_nascimento;
     private String email;
     private String telefone;
     private Date dt_cadastro;
@@ -25,12 +24,11 @@ public class Morador implements Serializable {
 
     public Morador() {}
 
-    public Morador(Long id, String nome, String cpf, String rg, Date dt_nascimento, String email, String telefone, Date dt_cadastro, Long id_unidade) {
+    public Morador(Long id, String nome, String cpf, String rg, String email, String telefone, Date dt_cadastro, Long id_unidade) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
-        this.dt_nascimento = dt_nascimento;
         this.email = email;
         this.telefone = telefone;
         this.dt_cadastro = dt_cadastro;
@@ -72,15 +70,6 @@ public class Morador implements Serializable {
 
     public void setRg(String rg) {
         this.rg = rg;
-    }
-
-    @Column(nullable = true)
-    public Date getDt_nascimento() {
-        return dt_nascimento;
-    }
-
-    public void setDt_nascimento(Date dt_nascimento) {
-        this.dt_nascimento = dt_nascimento;
     }
 
     @Column(nullable = true)

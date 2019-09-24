@@ -63,7 +63,6 @@
                                             <th>E-mail</th>
                                             <th>Telefone</th>
                                             <th>Unidade</th>
-                                            <th>Dt. Nascimento</th>
                                             <th>Dt. Cadastro</th>
                                             <th>Edição</th>
                                         </tr>
@@ -78,7 +77,6 @@
                                                 <td class="odd gradeX" align="center" th:text="${morador.email}">${morador.email}</td>
                                                 <td class="odd gradeX" align="center" th:text="${morador.telefone}">${morador.telefone}</td>
                                                 <td class="odd gradeX" align="center" th:text="${morador.id_unidade}">${morador.id_unidade}</td>
-                                                <td class="odd gradeX" align="center" th:text="${morador.dt_nascimento}">${morador.dt_nascimento}</td>
                                                 <td class="odd gradeX" align="center" th:text="${morador.dt_cadastro}">${morador.dt_cadastro}</td>
                                                 <td class="odd gradeX" align="center">
                                                     <a href="editarMorador/${morador.id}">Edit</a>
