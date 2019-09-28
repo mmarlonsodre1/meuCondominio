@@ -1,6 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -39,16 +40,14 @@
                         <form role="form" action="/login" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="text autofocus email">
-                                           </div>
-                                           <div class="form-group">
-                                           <input class="form-control" placeholder="Senha" name="senha" type="password">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="text autofocus email" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Senha" name="senha" type="password" required="true">
                                 </div>
                                 <div class="form-group">
                                     <p class="text-center">
-                                        <a data-toggle="modal" href="#solicitarAcesso"><font class="simplonRegularPreto12"><u>Solicitar acesso</u></font></a>
-                                        
-                                        <a data-toggle="modal" href="#recuperarSenha"><font class="simplonRegularPreto12"><u>Recuperar Senha</u></font></a>
+                                        <a data-toggle="modal" href="#solicitarAcesso"><font class="simplonRegularPreto12"><u>Cadastro</u></font></a>
                                     </p>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
@@ -67,90 +66,38 @@
                         <h5 class="modal-title text-center" id="myModalLabel">
                             Meu Condomínio
                         </h5>
-                        <br>
-                        <h4 class="modal-title text-center" id="myModalLabel">
-                            Solicitar Acesso
-                        </h4>
                     </div>
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
                                 <div class="tab-content">
-                                    <form action='' name="login" id="login" method="POST" enctype="multipart/form-data" onsubmit="return validarForm();">    
+                                    <form:form action="/cadastrar" modelAttribute="usuario">    
                                         <div class="row">
-                                            <div class="col-xs-4 col-md-4 col-lg-4 form-group">
-                                                <label>Nome:</label>
-                                                <input class="form-control" name="nome" id="nome" type="text" value=""/>
+                                            <div class="form-group col-xs-3 col-md-3 col-lg-3">
+                                                <form:label path="nome">Nome</form:label>
+                                                <form:input path="nome" id="nome" class="form-control" placeholder="Nome" required="true"/>
+                                            </div>   
+                                            <div class="form-group col-xs-3 col-md-3 col-lg-3">
+                                                <form:label path="email">E-mail</form:label>
+                                                <form:input path="email" id="email" class="form-control" placeholder="E-mail" value="" type="email" required="true"/>
+                                            </div>   
+                                            <div class="form-group col-xs-2 col-md-2 col-lg-2">
+                                                <form:label path="senha">Senha</form:label>
+                                                <form:input path="senha" id="senha" class="form-control" placeholder="Senha" value="" type="password" required="true"/>
                                             </div>
-                                            <div class="col-xs-5 col-md-5 col-lg-5 form-group">
-                                                <label>Email</label>
-                                                <input class="form-control" name = "email_cad" id="email_cad" type="text" value=""/>
-                                            </div>
-                                        </div>    
-                                        <div class="row">
-                                            <div class="col-xs-2 col-md-2 col-lg-2 form-group">
-                                                <label>Unidade</label>
-                                                <input class="form-control" name="id" id="id" type="text" value=""/>
-                                            </div>
-                                            <div class="col-xs-2 col-md-2 col-lg-2 form-group">
-                                                <label>Celular</label>
-                                                <input class="form-control" name="celular" id="celular" type="text" value=""/>
-                                            </div>
-                                            <div class="col-xs-3 col-md-3 col-lg-3 form-group">
-                                                <label>Perfil:</label>
-                                                <select name="perfil" id="perfil" class="form-control">
-                                                    <option value="">---</option>
-                                                    <option value="Morador">Morador</option>
-                                                    <option value="Portaria">Portaria</option>
-                                                    <option value="Administracao">Administração</option>
-                                                </select>
-                                            </div>    
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-3 col-md-3 col-lg-3 col-lg-offset-1 form-group">
-                                                <label>Senha:</label>
-                                                <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
-                                            </div>
-
-                                            <div class="col-xs-3 col-md-3 col-lg-3 col-lg-offset-1  form-group">
-                                                <label>Redigite Senha</label>
-                                                <input type="password" name="f19" class="form-control" id="f19" placeholder="Repita a Senha">
-                                            </div>
-                                        </div>    
+                                        </div>   
                                         <div class="row">
                                             <div class="col-xs-offset-4 col-md-offset-4 col-lg-offset-4 form-group">
                                                 <button type="submit" class="btn btn-primary active" id="submit" value="submit">Cadastrar</button>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
-                        </form>
                     </div>
                 </div> 
             </div>
-        </div>
-        <div class="modal fade" id="recuperarSenha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h5 class="modal-title text-center" id="myModalLabel">
-                            Meu Condomínio                            </h5>
-                        <br>
-                        <h4 class="modal-title text-center" id="myModalLabel">
-                            Recuperar Senha
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                            </div>
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
         </div> 
         
         <c:url value="/vendor/jquery/jquery.min.js" var="jQuery" />

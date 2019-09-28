@@ -46,6 +46,12 @@
                                                 <label name="id">${id}</label>
                                                 <input name="id" id="id" class="form-control" placeholder="${id}" readonly="true" value="${id}"/>
                                             </div>
+                                            
+                                            <div class="form-group col-xs-3 col-md-3 col-lg-3">
+                                                <form:label path="unidade_name">unidade</form:label>
+                                                <form:input path="unidade_name" class="form-control" disabled="true"/>
+                                            </div>
+                                            
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="proprietario">Proprietário</form:label>
                                                 <form:input path="proprietario" class="form-control" placeholder="Proprietário"/>
@@ -64,8 +70,8 @@
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="status">Status</form:label>
                                                 <form:select path="status" class="form-control">
-                                                    <form:option value="1">Lotada</form:option>
-                                                    <form:option value="2">Vazia</form:option>
+                                                    <form:option value="Ocupada">Lotada</form:option>
+                                                    <form:option value="Vazia">Vazia</form:option>
                                                 </form:select>
                                             </div>  
                                         </div>

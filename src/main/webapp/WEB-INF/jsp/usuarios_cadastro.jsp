@@ -44,15 +44,15 @@
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="nome">Nome</form:label>
-                                                <form:input path="nome" id="nome" class="form-control" placeholder="Nome"/>
+                                                <form:input path="nome" id="nome" class="form-control" placeholder="Nome" required="true"/>
                                             </div>   
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="email">E-mail</form:label>
-                                                <form:input path="email" id="email" class="form-control" placeholder="E-mail" value="" type="email"/>
+                                                <form:input path="email" id="email" class="form-control" placeholder="E-mail" value="" type="email" required="true"/>
                                             </div>   
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="senha">Senha</form:label>
-                                                <form:input path="senha" id="senha" class="form-control" placeholder="Senha" value="" type="password"/>
+                                                <form:input path="senha" id="senha" class="form-control" placeholder="Senha" value="" type="password" required="true"/>
                                             </div>
                                         </div>
                                         <!-- FIM LINHA -->

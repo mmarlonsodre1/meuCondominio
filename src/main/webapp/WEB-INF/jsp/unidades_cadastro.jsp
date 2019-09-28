@@ -45,7 +45,7 @@
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="unidade_name">Unidade</form:label>
-                                                <form:input path="unidade_name" class="form-control" placeholder="Unidade"/>
+                                                <form:input path="unidade_name" class="form-control" placeholder="Unidade" required="true"/>
                                             </div>
                                             
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">

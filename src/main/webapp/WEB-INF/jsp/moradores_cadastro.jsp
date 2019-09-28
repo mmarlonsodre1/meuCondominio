@@ -46,15 +46,15 @@
                                         <div class="row">
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="nome">Nome</form:label>
-                                                <form:input path="nome" id="proprietario" class="form-control" placeholder="Nome"/>
+                                                <form:input path="nome" id="proprietario" class="form-control" placeholder="Nome" required="true"/>
                                             </div>   
                                             <div class="form-group col-xs-3 col-md-3 col-lg-3">
                                                 <form:label path="cpf">CPF</form:label>
-                                                <form:input path="cpf" id="cpf" class="form-control" placeholder="CPF"/>
+                                                <form:input path="cpf" id="cpf" class="form-control" placeholder="CPF" required="true"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="rg">RG</form:label>
-                                                <form:input path="rg" id="telefone" class="form-control" placeholder="RG"/>
+                                                <form:input path="rg" id="telefone" class="form-control" placeholder="RG" required="true"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="email">E-mail</form:label>
@@ -68,7 +68,7 @@
                                                 <form:label class="control-label" path="id_unidade">Unidade</form:label>
                                                 <form:select path="id_unidade" id="id_apartamento" class="form-control">
                                                     <c:forEach items="${listUnidade}" var="unidade">        
-                                                        <form:option value="${unidade.id}">${unidade.unidade}</form:option>
+                                                        <form:option value="${unidade.id}">${unidade.unidade_name}</form:option>
                                                     </c:forEach>
                                                 </form:select>
                                             </div>

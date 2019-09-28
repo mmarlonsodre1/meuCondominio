@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="placa">Placa</form:label>
-                                                <form:input path="placa" id="placa" class="form-control" placeholder="Placa" value=""/>
+                                                <form:input path="placa" id="placa" class="form-control" placeholder="Placa" required="true"/>
                                             </div>   
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="marca">Marca</form:label>
@@ -81,21 +81,21 @@
                                             </div> 
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="modelo">Modelo</form:label>
-                                                <form:input path="modelo" id="modelo" class="form-control" placeholder="Modelo" value=""/>
+                                                <form:input path="modelo" id="modelo" class="form-control" placeholder="Modelo" required="true"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="ano">Ano</form:label>
-                                                <form:input path="ano" id="ano" class="form-control" placeholder="Ano" value="" type="number"/>
+                                                <form:input path="ano" id="ano" class="form-control" placeholder="Ano" required="true" type="number"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-md-2 col-lg-2">
                                                 <form:label path="cor">Cor</form:label>
-                                                <form:input path="cor" id="cor" class="form-control" placeholder="Cor" value=""/>
+                                                <form:input path="cor" id="cor" class="form-control" placeholder="Cor" required="true"/>
                                             </div>
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="id_unidade">Unidade</form:label>
                                                 <form:select path="id_unidade" id="id_unidade" class="form-control">
                                                    <c:forEach items="${listUnidade}" var="unidade">        
-                                                        <form:option value="${unidade.id}">${unidade.unidade}</form:option>
+                                                        <form:option value="${unidade.id}">${unidade.unidade_name}</form:option>
                                                     </c:forEach>                                                
                                                 </form:select>
                                             </div> 

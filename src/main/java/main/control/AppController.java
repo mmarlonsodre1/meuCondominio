@@ -8,7 +8,6 @@ import main.service.MoradorService;
 import main.service.UnidadeService;
 import main.service.VeiculoService;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,7 @@ public class AppController {
     @RequestMapping("/")
     public ModelAndView viewUser(Model model){
         ModelAndView mav = new ModelAndView("index");
+        mav.addObject("usuario", new Usuario());
         return mav;
     }
     
@@ -74,7 +74,7 @@ public class AppController {
         model.addAttribute("listUnidade", serviceUnidade.listUnidades());
         return mav;
     }
-//    
+    
     
     // TODO: SALVAR
     @RequestMapping(value = "/salvarUsuario", method = RequestMethod.POST)
@@ -145,7 +145,7 @@ public class AppController {
     }
    
     
-        // TODO: SALVAR Edicao
+    // TODO: SALVAR Edicao
     @RequestMapping(value = "/salvarEdicaoUsuario", method = RequestMethod.POST)
     public ModelAndView salvarEdicaoUsuario(@ModelAttribute("usuario") Usuario usuario, @RequestParam(name = "id") Long id) {
         ModelAndView mav = new ModelAndView("redirect:/usuarios");
@@ -220,10 +220,21 @@ public class AppController {
         return (listUsuario.size() > 0)? new ModelAndView("redirect:/usuarios") : new ModelAndView("index");   
     }
     
+    
+    // TODO: SALVAR
+    @RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
+    public ModelAndView cadastrar(@ModelAttribute("usuario") Usuario usuario) {
+        ModelAndView mav = new ModelAndView("redirect:/");
+        usuario.setDt_cadastro(new Date());
+        serviceUsuario.save(usuario);
+        return mav;
+    }
+    
+    
     // TODO: LOGOUT
     @RequestMapping("/logout")
     public ModelAndView logout(Model model){
-        ModelAndView mav = new ModelAndView("index");
+        ModelAndView mav = new ModelAndView("redirect:/");
         return mav;   
     }
     
