@@ -217,7 +217,7 @@ public class AppController {
     public ModelAndView login(@RequestParam(name = "email") String email, @RequestParam(name = "senha") String senha){
         ModelAndView mav = new ModelAndView("home");
         List<Usuario> listUsuario = serviceUsuario.login(email, senha);
-        return (listUsuario.size() > 0)? new ModelAndView("redirect:/usuarios") : new ModelAndView("index");   
+        return (listUsuario.size() > 0)? new ModelAndView("redirect:/usuarios") : new ModelAndView("redirect:/");   
     }
     
     

@@ -66,8 +66,8 @@
                                             <div class="form-group col-xs-2 col-lg-2">
                                                 <form:label class="control-label" path="status">Status</form:label>
                                                 <form:select path="status" class="form-control">
-                                                    <form:option value="1">Utilizada</form:option>
-                                                    <form:option value="2">Vazia</form:option>
+                                                    <form:option value="Ocupada">Ocupada</form:option>
+                                                    <form:option value="Vazia">Vazia</form:option>
                                                 </form:select>
                                             </div>
                                         </div>

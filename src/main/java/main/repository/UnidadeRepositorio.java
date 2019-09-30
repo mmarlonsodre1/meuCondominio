@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UnidadeRepositorio extends JpaRepository<Unidade, Long>{
-    @Query(value="SELECT * FROM unidade u WHERE u.unidade IS NOT NULL ", nativeQuery = true)
+    @Query(value="SELECT * FROM unidade u WHERE u.unidade_name IS NOT NULL ", nativeQuery = true)
     public List<Unidade> listPorUnidade(); 
     
     @Modifying 
